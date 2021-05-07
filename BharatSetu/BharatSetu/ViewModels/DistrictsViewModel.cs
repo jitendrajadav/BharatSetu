@@ -9,22 +9,27 @@ using Xamarin.Forms;
 
 namespace BharatSetu.ViewModels
 {
-    public class StateViewModel : BaseViewModel
+    [QueryProperty(nameof(StateId), nameof(StateId))]
+
+    public class DistrictsViewModel : BaseViewModel
     {
-        private State _selectedItem;
+        private Districts _selectedItem;
 
-        public ObservableCollection<State> Items { get; }
-        public Command LoadItemsCommand { get; }
+        public ObservableCollection<Districts> Items { get; }
         public Command AddItemCommand { get; }
-        public Command<State> ItemTapped { get; }
+        public Command<Districts> ItemTapped { get; }
 
-        public StateViewModel()
+        public Command LoadItemsCommand { get; }
+
+        public string StateId { get; set; }
+
+        public DistrictsViewModel()
         {
-            Title = "States";
-            Items = new ObservableCollection<State>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Title = "Districts";
+            Items = new ObservableCollection<Districts>();
 
-            ItemTapped = new Command<State>(OnItemSelected);
+            ItemTapped = new Command<Districts>(OnItemSelected);
+            LoadItemsCommand = new Command(async() => await ExecuteLoadItemsCommand());
 
             AddItemCommand = new Command(OnAddItem);
         }
@@ -34,14 +39,14 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var states = await DataStore.GetAllStates("IN");
+                var states = await DataStore.GetDistrictsByStatesId("IN", StateId);
                 if (states.IsSuccessStatusCode)
                 {
                     var response = await states.Content.ReadAsStringAsync();
-                    var items = await Task.Run(() => JsonConvert.DeserializeObject<StateModel>(response, GetJsonSetting()));
+                    var items = await Task.Run(() => JsonConvert.DeserializeObject<DistrictsModel>(response, GetJsonSetting()));
 
                     Items.Clear();
-                    foreach (var item in items.States)
+                    foreach (var item in items.Districts)
                     {
                         Items.Add(item);
                     }
@@ -63,7 +68,7 @@ namespace BharatSetu.ViewModels
             SelectedItem = null;
         }
 
-        public State SelectedItem
+        public Districts SelectedItem
         {
             get => _selectedItem;
             set
@@ -78,13 +83,13 @@ namespace BharatSetu.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(State item)
+        async void OnItemSelected(Districts item)
         {
             if (item == null)
                 return;
 
-            // This will push the DistrictsPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(DistrictsPage)}?{nameof(DistrictsViewModel.StateId)}={item.State_id}");
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.State_id}");
         }
     }
 }

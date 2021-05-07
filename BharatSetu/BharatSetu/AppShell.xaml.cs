@@ -10,6 +10,7 @@ namespace BharatSetu
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(StatePage), typeof(StatePage));
+            Routing.RegisterRoute(nameof(DistrictsPage), typeof(DistrictsPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
