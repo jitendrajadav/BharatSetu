@@ -32,12 +32,6 @@ namespace BharatSetu.ViewModels
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
-            var states = await DataStore.GetAllStates("IN");
-            if (states.IsSuccessStatusCode)
-            {
-                var response = await states.Content.ReadAsStringAsync();
-                var model = await Task.Run(() => JsonConvert.DeserializeObject<StateModel>(response, GetJsonSetting()));
-            }
             try
             {
                 Items.Clear();
