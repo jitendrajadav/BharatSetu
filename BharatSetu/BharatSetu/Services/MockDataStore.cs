@@ -31,8 +31,16 @@ namespace BharatSetu.Services
 
         public async Task<HttpResponseMessage> BeneficiaryAuthentication(Mobile mobile)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.PostAuthentication, mobile));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.PostAuthentication));
             string json = JsonConvert.SerializeObject(mobile);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            return await client.PostAsync(uri, content);
+        }
+
+        public async Task<HttpResponseMessage> ConfirmAuthentication(ConfirmAuthentication confirm)
+        {
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.PostConfirmAuthentication));
+            string json = JsonConvert.SerializeObject(confirm);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             return await client.PostAsync(uri, content);
         }
@@ -87,6 +95,5 @@ namespace BharatSetu.Services
             return await Task.FromResult(items);
         }
 
-        
     }
 }
