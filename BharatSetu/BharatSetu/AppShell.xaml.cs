@@ -10,6 +10,7 @@ namespace BharatSetu
         {
             InitializeComponent();
 
+            Routing.RegisterRoute(nameof(VaccinationSessionsPage), typeof(VaccinationSessionsPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(StatePage), typeof(StatePage));
             Routing.RegisterRoute(nameof(DistrictsPage), typeof(DistrictsPage));

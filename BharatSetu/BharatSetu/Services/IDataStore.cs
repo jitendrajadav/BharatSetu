@@ -1,4 +1,5 @@
 ﻿using BharatSetu.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,8 +12,9 @@ namespace BharatSetu.Services
         Task<HttpResponseMessage> ConfirmAuthentication(ConfirmAuthentication confirm);
 
         Task<HttpResponseMessage> GetAllStates(string acceptLanguage);
-        Task<HttpResponseMessage> GetDistrictsByStatesId(string acceptLanguage,string stateId);
-        
+        Task<HttpResponseMessage> GetDistrictsByStatesId(string acceptLanguage, string stateId);
+        Task<HttpResponseMessage> GetPlannedVaccinationByPin(string acceptLanguage, string pincode, string date);
+
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);
         Task<bool> DeleteItemAsync(string id);

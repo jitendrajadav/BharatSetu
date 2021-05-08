@@ -61,6 +61,15 @@ namespace BharatSetu.Services
             return await client.GetAsync(uri);
         }
 
+
+        public async Task<HttpResponseMessage> GetPlannedVaccinationByPin(string acceptLanguage, string pincode, string date)
+        {
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GetPlannedVaccinationSessions, pincode,date));
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
+            request.Headers.Add("Accept-Language", acceptLanguage);
+            return await client.GetAsync(uri);
+        }
+
         public async Task<bool> AddItemAsync(Item item)
         {
             items.Add(item);

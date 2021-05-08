@@ -1,4 +1,5 @@
 ﻿using BharatSetu.Models;
+using BharatSetu.Views;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -45,6 +46,9 @@ namespace BharatSetu.ViewModels
                 var items = await Task.Run(() => JsonConvert.DeserializeObject<AuthConfirm>(response, GetJsonSetting()));
             }
             var response1 = await confirmMsg.Content.ReadAsStringAsync();
+
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            await Shell.Current.GoToAsync($"//{nameof(StatePage)}");
         }
 
         private async void OnLoginClicked(object obj)
@@ -67,8 +71,6 @@ namespace BharatSetu.ViewModels
                 IsConfirmVisible = false;
             }
 
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
     }
 }

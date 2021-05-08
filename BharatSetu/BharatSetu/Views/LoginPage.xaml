@@ -11,7 +11,7 @@
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Entry Placeholder="Mobile" Text="{Binding Mobile}" IsEnabled="{Binding IsOTPVisible}"/>
             <Entry Placeholder="OTP" IsVisible="{Binding IsConfirmVisible}" Text="{Binding OTP}" />
-            <Button VerticalOptions="Center" Text="SendOTP" Command="{Binding LoginCommand}" IsEnabled="{Binding IsOTPVisible}"/>
+            <Button VerticalOptions="Center" Text="Send OTP" Command="{Binding LoginCommand}" IsEnabled="{Binding IsOTPVisible}"/>
             <Button VerticalOptions="Center" Text="Confirm" IsVisible="{Binding IsConfirmVisible}" Command="{Binding ConfirmCommand}"/>
         </StackLayout>
     </ContentPage.Content>
