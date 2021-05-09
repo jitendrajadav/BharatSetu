@@ -81,5 +81,4 @@ namespace BharatSetu.Models
         public List<Session> Sessions { get; set; }
     }
 
-
 }

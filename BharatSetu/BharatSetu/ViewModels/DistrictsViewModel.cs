@@ -39,7 +39,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var states = await DataStore.GetDistrictsByStatesId("IN", StateId);
+                var states = await DataStore.Districts("IN", StateId);
                 if (states.IsSuccessStatusCode)
                 {
                     var response = await states.Content.ReadAsStringAsync();

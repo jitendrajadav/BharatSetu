@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace BharatSetu.ViewModels
 {
-    public class StateViewModel : BaseViewModel
+    public class StatesViewModel : BaseViewModel
     {
         private State _selectedItem;
 
@@ -18,7 +18,7 @@ namespace BharatSetu.ViewModels
         public Command AddItemCommand { get; }
         public Command<State> ItemTapped { get; }
 
-        public StateViewModel()
+        public StatesViewModel()
         {
             Title = "States";
             Items = new ObservableCollection<State>();
@@ -34,7 +34,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var states = await DataStore.GetAllStates("IN");
+                var states = await DataStore.States("IN");
                 if (states.IsSuccessStatusCode)
                 {
                     var response = await states.Content.ReadAsStringAsync();

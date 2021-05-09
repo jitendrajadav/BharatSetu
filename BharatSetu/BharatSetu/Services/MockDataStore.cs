@@ -28,56 +28,69 @@ namespace BharatSetu.Services
             };
         }
 
-
-        public async Task<HttpResponseMessage> BeneficiaryAuthentication(Mobile mobile)
+        public async Task<HttpResponseMessage> GenerateOTP(Mobile mobile)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.PostAuthentication));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GenerateOTP));
             string json = JsonConvert.SerializeObject(mobile);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             return await client.PostAsync(uri, content);
         }
 
-        public async Task<HttpResponseMessage> ConfirmAuthentication(ConfirmAuthentication confirm)
+        public async Task<HttpResponseMessage> ConfirmOTP(ConfirmAuthentication confirm)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.PostConfirmAuthentication));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.ConfirmOTP));
             string json = JsonConvert.SerializeObject(confirm);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             return await client.PostAsync(uri, content);
         }
 
-        public async Task<HttpResponseMessage> GetAllStates(string acceptLanguage)
+        public async Task<HttpResponseMessage> States(string acceptLanguage)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GetStatesIndia));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.States));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
             request.Headers.Add("Accept-Language", acceptLanguage);
             return await client.GetAsync(uri);
         }
 
-        public async Task<HttpResponseMessage> GetDistrictsByStatesId(string acceptLanguage, string stateId)
+        public async Task<HttpResponseMessage> Districts(string acceptLanguage, string stateId)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GetDistrictsByStatesId, stateId));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.Districts, stateId));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
             request.Headers.Add("Accept-Language", acceptLanguage);
             return await client.GetAsync(uri);
         }
 
-
-        public async Task<HttpResponseMessage> GetPlannedVaccinationByPin(string acceptLanguage, string pincode, string date)
+        public async Task<HttpResponseMessage> FindByPin(string acceptLanguage, string pincode, string date)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GetPlannedVaccinationSessions, pincode,date));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.FindByPin, pincode,date));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
             request.Headers.Add("Accept-Language", acceptLanguage);
             return await client.GetAsync(uri);
         }
 
-        public async Task<HttpResponseMessage> GetPlannedVaccinationByDist(string acceptLanguage, string distId, string date)
+        public async Task<HttpResponseMessage> FindByDistrict(string acceptLanguage, string distId, string date)
         {
-            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.GetPlannedVaccinationSessionsByDistrict, distId, date));
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.FindByDistrict, distId, date));
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
             request.Headers.Add("Accept-Language", acceptLanguage);
             return await client.GetAsync(uri);
         }
 
+        public async Task<HttpResponseMessage> CalanderByPin(string acceptLanguage, string pincode, string date)
+        {
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.CalanderByPin, pincode, date));
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
+            request.Headers.Add("Accept-Language", acceptLanguage);
+            return await client.GetAsync(uri);
+        }
+
+        public async Task<HttpResponseMessage> CalanderByDistrict(string acceptLanguage, string distId, string date)
+        {
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.CalendarByDistrict, distId, date));
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, uri);
+            request.Headers.Add("Accept-Language", acceptLanguage);
+            return await client.GetAsync(uri);
+        }
 
         public async Task<bool> AddItemAsync(Item item)
         {

@@ -63,11 +63,11 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var searchDist = await DataStore.GetPlannedVaccinationByDist("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
+                var searchDist = await DataStore.FindByDistrict("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
                 var response1 = await searchDist.Content.ReadAsStringAsync();
                 var items1 = await Task.Run(() => JsonConvert.DeserializeObject<VaccinationSessions>(response1, GetJsonSetting()));
 
-                var search = await DataStore.GetPlannedVaccinationByPin("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
+                var search = await DataStore.FindByPin("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {
                     IsVaccinationLoaded = true;

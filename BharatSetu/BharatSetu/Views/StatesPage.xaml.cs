@@ -6,13 +6,13 @@ using Xamarin.Forms.Xaml;
 namespace BharatSetu.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StatePage : ContentPage
+    public partial class StatesPage : ContentPage
     {
-        StateViewModel _viewModel;
-        public StatePage()
+        StatesViewModel _viewModel;
+        public StatesPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new StateViewModel();
+            BindingContext = _viewModel = new StatesViewModel();
         }
 
         protected override void OnAppearing()

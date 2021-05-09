@@ -39,7 +39,7 @@ namespace BharatSetu.ViewModels
                 otp = OTP,
                 txnId = TxnId
             };
-            var confirmMsg = await DataStore.ConfirmAuthentication(confirm);
+            var confirmMsg = await DataStore.ConfirmOTP(confirm);
             if (confirmMsg.IsSuccessStatusCode)
             {
                 var response = await confirmMsg.Content.ReadAsStringAsync();
@@ -55,7 +55,7 @@ namespace BharatSetu.ViewModels
         {
             Mobile mobile =  new Mobile()
             { mobile = Mobile };
-            var auth = await DataStore.BeneficiaryAuthentication(mobile);
+            var auth = await DataStore.GenerateOTP(mobile);
             if (auth.IsSuccessStatusCode)
             {
                 var response = await auth.Content.ReadAsStringAsync();
