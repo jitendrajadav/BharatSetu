@@ -14,6 +14,7 @@ namespace BharatSetu.Services
         Task<HttpResponseMessage> GetAllStates(string acceptLanguage);
         Task<HttpResponseMessage> GetDistrictsByStatesId(string acceptLanguage, string stateId);
         Task<HttpResponseMessage> GetPlannedVaccinationByPin(string acceptLanguage, string pincode, string date);
+        Task<HttpResponseMessage> GetPlannedVaccinationByDist(string acceptLanguage, string distId, string date);
 
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);

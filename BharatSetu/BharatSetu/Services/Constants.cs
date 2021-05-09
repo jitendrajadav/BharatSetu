@@ -16,7 +16,7 @@
         public const string GetCertificateByBeneficiaryReferenceId = "registration/certificate/public/download{0}";
 
         public const string GetPlannedVaccinationSessions = "appointment/sessions/public/findByPin?pincode={0}&date={1}";
-        public const string GetPlannedVaccinationSessionsByDistrict = "appointment/sessions/public/findByDistrict/?{0}&{1}";
+        public const string GetPlannedVaccinationSessionsByDistrict = "appointment/sessions/public/findByDistrict/?district_id={0}&date={1}";
         public const string GetPlannedVaccinationSessionsFor7Days = "appointment/sessions/public/calendarByPin?{0}&{1}";
         public const string GetPlannedVaccinationSessionsFor7DaysDistricts = "appointment/sessions/public/calendarByDistrict?{0}&{1}";
     }
