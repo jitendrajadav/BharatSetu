@@ -9,8 +9,9 @@ namespace BharatSetu
         public AppShell()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute(nameof(VaccinationSessionsPage), typeof(VaccinationSessionsPage));
+            
+            Routing.RegisterRoute(nameof(FindByDistrictPage), typeof(FindByDistrictPage));
+            Routing.RegisterRoute(nameof(FindByPinPage), typeof(FindByPinPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(StatesPage), typeof(StatesPage));
             Routing.RegisterRoute(nameof(DistrictsPage), typeof(DistrictsPage));

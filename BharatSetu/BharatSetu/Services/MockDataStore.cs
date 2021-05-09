@@ -92,6 +92,12 @@ namespace BharatSetu.Services
             return await client.GetAsync(uri);
         }
 
+        public async Task<HttpResponseMessage> Download(string beneficiary_reference_id)
+        {
+            Uri uri = new Uri(string.Format(Constants.BaseUrl + Constants.Download, beneficiary_reference_id));
+            return await client.GetAsync(uri);
+        }
+
         public async Task<bool> AddItemAsync(Item item)
         {
             items.Add(item);

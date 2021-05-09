@@ -5,13 +5,13 @@ using Xamarin.Forms.Xaml;
 namespace BharatSetu.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VaccinationSessionsPage : ContentPage
+    public partial class FindByDistrictPage : ContentPage
     {
-        VaccinationSessionsViewModel _viewModel;
-        public VaccinationSessionsPage()
+        FindByDistrictViewModel _viewModel;
+        public FindByDistrictPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new VaccinationSessionsViewModel();
+            BindingContext = _viewModel = new FindByDistrictViewModel();
         }
 
         protected override void OnAppearing()

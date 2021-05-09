@@ -48,7 +48,7 @@ namespace BharatSetu.ViewModels
             var response1 = await confirmMsg.Content.ReadAsStringAsync();
 
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(StatePage)}");
+            await Shell.Current.GoToAsync($"//{nameof(StatesPage)}");
         }
 
         private async void OnLoginClicked(object obj)

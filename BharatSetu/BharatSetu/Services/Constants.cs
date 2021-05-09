@@ -19,5 +19,7 @@
         public const string FindByDistrict = "appointment/sessions/public/findByDistrict/?district_id={0}&date={1}";
         public const string CalanderByPin = "appointment/sessions/public/calendarByPin?pincode={0}&date={1}";
         public const string CalendarByDistrict = "appointment/sessions/public/calendarByDistrict?district_id={0}&date={1}";
+        
+        public const string Download = "registration/certificate/public/download?beneficiary_reference_id={0}";
     }
 }

@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace BharatSetu.ViewModels
 {
-    public class VaccinationSessionsViewModel : BaseViewModel
+    public class FindByPinViewModel : BaseViewModel
     {
         public ObservableCollection<Session> Items { get; }
 
@@ -47,7 +47,7 @@ namespace BharatSetu.ViewModels
         }
         public Command SearchCommand { get;  }
 
-        public VaccinationSessionsViewModel()
+        public FindByPinViewModel()
         {
             Items = new ObservableCollection<Session>();
             SearchCommand = new Command(OnSearchClicked);

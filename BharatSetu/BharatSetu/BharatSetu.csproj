@@ -15,11 +15,14 @@
     <Compile Update="Views\DistrictsPage.xaml.cs">
       <DependentUpon>DistrictsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\FindByDistrictPage.xaml.cs">
+      <DependentUpon>FindByDistrictPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\StatesPage.xaml.cs">
       <DependentUpon>StatesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\VaccinationSessionsPage.xaml.cs">
-      <DependentUpon>VaccinationSessionsPage.xaml</DependentUpon>
+    <Compile Update="Views\FindByPinPage.xaml.cs">
+      <DependentUpon>FindByPinPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

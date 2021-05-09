@@ -18,6 +18,8 @@ namespace BharatSetu.Services
         Task<HttpResponseMessage> CalanderByPin(string acceptLanguage, string pincode, string date);
         Task<HttpResponseMessage> CalanderByDistrict(string acceptLanguage, string distId, string date);
 
+        Task<HttpResponseMessage> Download(string beneficiary_reference_id);
+
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);
         Task<bool> DeleteItemAsync(string id);
