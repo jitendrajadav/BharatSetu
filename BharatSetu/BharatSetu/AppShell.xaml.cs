@@ -10,6 +10,8 @@ namespace BharatSetu
         {
             InitializeComponent();
             
+            Routing.RegisterRoute(nameof(CalendarByDistrictPage), typeof(CalendarByDistrictPage));
+            Routing.RegisterRoute(nameof(CalendarByPinPage), typeof(CalendarByPinPage));
             Routing.RegisterRoute(nameof(FindByDistrictPage), typeof(FindByDistrictPage));
             Routing.RegisterRoute(nameof(FindByPinPage), typeof(FindByPinPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));

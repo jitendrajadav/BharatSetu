@@ -84,6 +84,12 @@
     <FlyoutItem Title="FindByPinPage" Icon="icon_login.png">
         <ShellContent Route="FindByPinPage" ContentTemplate="{DataTemplate local:FindByPinPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="CalendarByPinPage" Icon="icon_login.png">
+        <ShellContent Route="CalendarByPinPage" ContentTemplate="{DataTemplate local:CalendarByPinPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="CalendarByDistrictPage" Icon="icon_login.png">
+        <ShellContent Route="CalendarByDistrictPage" ContentTemplate="{DataTemplate local:CalendarByDistrictPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="States" Icon="icon_state.png">
         <ShellContent Route="StatesPage" ContentTemplate="{DataTemplate local:StatesPage}" />
     </FlyoutItem>

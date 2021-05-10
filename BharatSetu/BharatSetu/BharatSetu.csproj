@@ -12,11 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\CalendarByDistrictPage.xaml.cs">
+      <DependentUpon>CalenderByDistrictPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DistrictsPage.xaml.cs">
       <DependentUpon>DistrictsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\FindByDistrictPage.xaml.cs">
       <DependentUpon>FindByDistrictPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CalendarByPinPage.xaml.cs">
+      <DependentUpon>CalenderByPinPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\StatesPage.xaml.cs">
       <DependentUpon>StatesPage.xaml</DependentUpon>
