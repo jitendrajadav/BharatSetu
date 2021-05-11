@@ -78,30 +78,20 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="FindByDistrictPage" Icon="icon_login.png">
+    <FlyoutItem Route="Vaccination" Title="FindByDistrictPage" Icon="icon_feed.png" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Route="FindByDistrictPage" ContentTemplate="{DataTemplate local:FindByDistrictPage}" />
+        <ShellContent Title="FindByPinPage" Icon="icon_feed.png" Route="FindByPinPage" ContentTemplate="{DataTemplate local:FindByPinPage}" />
+        <ShellContent Title="CalendarByPinPage" Icon="icon_feed.png" Route="CalendarByPinPage" ContentTemplate="{DataTemplate local:CalendarByPinPage}" />
+        <ShellContent Title="CalendarByDistrictPage" Icon="icon_feed.png" Route="CalendarByDistrictPage" ContentTemplate="{DataTemplate local:CalendarByDistrictPage}" />
+        <ShellContent Title="States" Icon="icon_feed.png" Route="StatesPage" ContentTemplate="{DataTemplate local:StatesPage}" />
+        <ShellContent Title="District" Icon="icon_feed.png" Route="DistrictsPage" ContentTemplate="{DataTemplate local:DistrictsPage}" />
+        <ShellContent Title="Browse" Icon="icon_feed.png" Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="FindByPinPage" Icon="icon_login.png">
-        <ShellContent Route="FindByPinPage" ContentTemplate="{DataTemplate local:FindByPinPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="CalendarByPinPage" Icon="icon_login.png">
-        <ShellContent Route="CalendarByPinPage" ContentTemplate="{DataTemplate local:CalendarByPinPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="CalendarByDistrictPage" Icon="icon_login.png">
-        <ShellContent Route="CalendarByDistrictPage" ContentTemplate="{DataTemplate local:CalendarByDistrictPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="States" Icon="icon_state.png">
-        <ShellContent Route="StatesPage" ContentTemplate="{DataTemplate local:StatesPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="About" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>
+    
+    <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" IconImageSource="icon_about.png" Clicked="OnMenuItemClicked">
     </MenuItem>
 
     <!--

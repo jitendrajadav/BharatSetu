@@ -1,6 +1,7 @@
 ﻿using BharatSetu.Models;
 using BharatSetu.Views;
 using Newtonsoft.Json;
+using Plugin.LocalNotification;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -49,6 +50,7 @@ namespace BharatSetu.ViewModels
 
         public FindByDistrictViewModel()
         {
+            Title = "FindByDistrict";
             Items = new ObservableCollection<Session>();
             SearchCommand = new Command(OnSearchClicked);
         }
@@ -60,6 +62,16 @@ namespace BharatSetu.ViewModels
 
         private async void OnSearchClicked(object obj)
         {
+            var notification = new NotificationRequest
+            {
+                NotificationId = 100,
+                Title = "Test",
+                Description = "Test Description",
+                ReturningData = "Dummy data", // Returning data when tapped on notification.
+                NotifyTime = DateTime.Now.AddSeconds(30) // Used for Scheduling local notification, if not specified notification will show immediately.
+            };
+            NotificationCenter.Current.Show(notification);
+
             IsBusy = true;
             try
             {

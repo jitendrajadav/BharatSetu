@@ -35,8 +35,8 @@ namespace BharatSetu.ViewModels
             set => SetProperty(ref pincode, value);
         }
 
-        private Session _selectedItem;
-        public Session SelectedItem
+        private Center _selectedItem;
+        public Center SelectedItem
         {
             get => _selectedItem;
             set
@@ -49,6 +49,7 @@ namespace BharatSetu.ViewModels
 
         public CalendarByPinViewModel()
         {
+            Title = "CalendarByPin";
             Items = new ObservableCollection<Center>();
             SearchCommand = new Command(OnSearchClicked);
         }
@@ -86,13 +87,13 @@ namespace BharatSetu.ViewModels
             }
         }
 
-        async void OnItemSelected(Session item)
+        async void OnItemSelected(Center item)
         {
             if (item == null)
                 return;
 
             // This will push the DistrictsPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(DistrictsPage)}?{nameof(DistrictsViewModel.StateId)}={item.Session_id}");
+            await Shell.Current.GoToAsync($"{nameof(DistrictsPage)}?{nameof(DistrictsViewModel.StateId)}={item.Center_id}");
         }
     }
 }

@@ -37,7 +37,7 @@
                     <DataTemplate>
                         <Grid 
                             Padding="10,10,10,10" 
-                            x:DataType="model:Session" 
+                            x:DataType="model:Center" 
                             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,1" 
                             ColumnDefinitions="Auto,*">
                             <Label
@@ -204,7 +204,7 @@
                                 VerticalOptions="Center"
                                 Grid.Column="1"
                                 Grid.Row="8"
-                                Text="{Binding Fee}"
+                                Text="{Binding Vaccine_fees[0].Fee}"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="Default"/>
@@ -222,7 +222,7 @@
                                 VerticalOptions="Center"
                                 Grid.Column="1"
                                 Grid.Row="9"
-                                Text="{Binding Available_capacity}" 
+                                Text="{Binding Sessions[0].Available_capacity}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="Default"/>
@@ -241,7 +241,7 @@
                                 VerticalOptions="Center"
                                 Grid.Column="1"
                                 Grid.Row="10"
-                                Text="{Binding Min_age_limit}"
+                                Text="{Binding Sessions[0].Min_age_limit}"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="Default"/>
@@ -259,7 +259,7 @@
                                 VerticalOptions="Center"
                                 Grid.Column="1"
                                 Grid.Row="11"
-                                Text="{Binding Vaccine}"
+                                Text="{Binding Sessions[0].Vaccine}"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="Default"/>

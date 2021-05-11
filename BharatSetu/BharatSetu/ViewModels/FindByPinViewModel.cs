@@ -49,6 +49,7 @@ namespace BharatSetu.ViewModels
 
         public FindByPinViewModel()
         {
+            Title = "FindByPin";
             Items = new ObservableCollection<Session>();
             SearchCommand = new Command(OnSearchClicked);
         }
@@ -63,10 +64,6 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var searchDist = await DataStore.FindByDistrict("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
-                var response1 = await searchDist.Content.ReadAsStringAsync();
-                var items1 = await Task.Run(() => JsonConvert.DeserializeObject<VaccinationSessions>(response1, GetJsonSetting()));
-
                 var search = await DataStore.FindByPin("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {

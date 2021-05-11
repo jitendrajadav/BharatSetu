@@ -1,6 +1,5 @@
 ﻿using BharatSetu.Models;
 using BharatSetu.Views;
-using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;

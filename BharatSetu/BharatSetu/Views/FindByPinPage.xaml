@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="{Binding Title}"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:Class="BharatSetu.Views.FindByPinPage">

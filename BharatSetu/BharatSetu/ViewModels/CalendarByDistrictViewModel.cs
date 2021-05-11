@@ -49,6 +49,7 @@ namespace BharatSetu.ViewModels
 
         public CalendarByDistrictViewModel()
         {
+            Title = "CalendarByDistrict";
             Items = new ObservableCollection<Center>();
             SearchCommand = new Command(OnSearchClicked);
         }

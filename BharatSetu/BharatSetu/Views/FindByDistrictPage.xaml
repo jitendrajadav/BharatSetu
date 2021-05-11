@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:BharatSetu.Controls"
              mc:Ignorable="d"
+             Title="{Binding Title}"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:Class="BharatSetu.Views.FindByDistrictPage">
+    <Shell.SearchHandler>
+        <controls:VaccineSearchHandler Placeholder="Enter search term"
+                                      ShowsResults="true" />
+    </Shell.SearchHandler>
     <ContentPage.Content>
         <Grid 
             Padding="10,0,10,0" 

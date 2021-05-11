@@ -20,9 +20,19 @@ namespace BharatSetu.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            // Ask the user for permission to show notifications on iOS 10.0+ at startup.
+            // If not asked at startup, user will be asked when showing the first notification.
+            Plugin.LocalNotification.NotificationCenter.AskPermission();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override void WillEnterForeground(UIApplication uiApplication)
+        {
+            Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
         }
     }
 }
