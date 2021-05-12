@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:BharatSetu.Views"
        Title="BharatSetu"
+       xmlns:controls="clr-namespace:BharatSetu.Controls"
        x:Class="BharatSetu.AppShell">
 
     <!--
@@ -70,8 +71,26 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+
+            <Style TargetType="ShellItem"
+               BasedOn="{StaticResource BaseStyle}" />
+            <Style x:Key="VaccineShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="Shell.BackgroundColor"
+                    Value="{StaticResource Primary}" />
+            </Style>
+
         </ResourceDictionary>
     </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <controls:FlyoutFooter />
+    </Shell.FlyoutFooter>
 
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
@@ -79,7 +98,9 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
     <FlyoutItem Route="Vaccination" Title="FindByDistrictPage" Icon="icon_feed.png" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Route="FindByDistrictPage" ContentTemplate="{DataTemplate local:FindByDistrictPage}" />
+        <ShellContent
+            Style="{StaticResource VaccineShell}"
+            Route="FindByDistrictPage" ContentTemplate="{DataTemplate local:FindByDistrictPage}" />
         <ShellContent Title="FindByPinPage" Icon="icon_feed.png" Route="FindByPinPage" ContentTemplate="{DataTemplate local:FindByPinPage}" />
         <ShellContent Title="CalendarByPinPage" Icon="icon_feed.png" Route="CalendarByPinPage" ContentTemplate="{DataTemplate local:CalendarByPinPage}" />
         <ShellContent Title="CalendarByDistrictPage" Icon="icon_feed.png" Route="CalendarByDistrictPage" ContentTemplate="{DataTemplate local:CalendarByDistrictPage}" />

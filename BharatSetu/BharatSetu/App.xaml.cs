@@ -13,11 +13,14 @@ namespace BharatSetu
 
             DependencyService.Register<MockDataStore>();
 
-            // Local Notification received event listener
-            NotificationCenter.Current.NotificationReceived += OnLocalNotificationReceived;
+            if (Device.UWP != Device.RuntimePlatform)
+            {
+                // Local Notification received event listener
+                NotificationCenter.Current.NotificationReceived += OnLocalNotificationReceived;
 
-            // Local Notification tap event listener
-            NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped;
+                // Local Notification tap event listener
+                NotificationCenter.Current.NotificationTapped += OnLocalNotificationTapped; 
+            }
 
             MainPage = new AppShell();
         }
