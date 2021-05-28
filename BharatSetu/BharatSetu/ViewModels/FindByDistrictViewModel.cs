@@ -70,7 +70,7 @@ namespace BharatSetu.ViewModels
                 ReturningData = "Dummy data", // Returning data when tapped on notification.
                 NotifyTime = DateTime.Now.AddSeconds(30) // Used for Scheduling local notification, if not specified notification will show immediately.
             };
-            NotificationCenter.Current.Show(notification);
+            bool v = await NotificationCenter.Current.Show(notification);
 
             IsBusy = true;
             try
