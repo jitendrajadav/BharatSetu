@@ -148,4 +148,9 @@
       <Name>BharatSetu</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\BharatSetu\Asset\india.png">
+      <Link>Resources\india.png</Link>
+    </BundleResource>
+  </ItemGroup>
 </Project>

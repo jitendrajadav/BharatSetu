@@ -78,7 +78,7 @@
                TargetType="Element"
                BasedOn="{StaticResource BaseStyle}">
                 <Setter Property="Shell.BackgroundColor"
-                    Value="{StaticResource Primary}" />
+                    Value="Bisque" />
             </Style>
 
         </ResourceDictionary>
@@ -99,6 +99,8 @@
     -->
     <FlyoutItem Route="Vaccination" Title="FindByDistrictPage" Icon="icon_feed.png" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
+            Title="FindByDistrictPage"
+            Icon="icon_feed.png"
             Style="{StaticResource VaccineShell}"
             Route="FindByDistrictPage" ContentTemplate="{DataTemplate local:FindByDistrictPage}" />
         <ShellContent Title="FindByPinPage" Icon="icon_feed.png" Route="FindByPinPage" ContentTemplate="{DataTemplate local:FindByPinPage}" />

@@ -108,5 +108,10 @@
       <Name>BharatSetu</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\BharatSetu\Asset\india.png">
+      <Link>Resources\drawable\india.png</Link>
+    </AndroidResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

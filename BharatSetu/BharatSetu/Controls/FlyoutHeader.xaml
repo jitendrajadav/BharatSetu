@@ -2,15 +2,10 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BharatSetu.Controls.FlyoutHeader"
-             HeightRequest="200">
-    <Grid BackgroundColor="Green">
-        <Image Aspect="AspectFill" 
-               Source="india.png" 
-               Opacity="0.6" />
-        <Label Text="Maa!" 
-               TextColor="White" 
-               FontAttributes="Bold" 
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center" />
-    </Grid>
+             HeightRequest="150"
+             WidthRequest="150">
+    <Image Aspect="AspectFill"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand" 
+           Source="india.png"/>
 </ContentView>
