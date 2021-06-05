@@ -13,7 +13,7 @@ namespace BharatSetu.ViewModels
     {
         #region Properties
 
-        public ObservableCollection<Session> Items => new ObservableCollection<Session>();
+        public ObservableCollection<Session> Items { get; set; } = new ObservableCollection<Session>();
 
 
         private bool isVaccinationLoaded;

@@ -11,7 +11,7 @@ namespace BharatSetu.ViewModels
     public class ItemsViewModel : BaseViewModel
     {
         #region Properties
-        public ObservableCollection<Item> Items => new ObservableCollection<Item>();
+        public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
 
         private Item _selectedItem;
         public Item SelectedItem

@@ -27,8 +27,8 @@
             <Button 
                 VerticalOptions="Center" 
                 Text="Send OTP" 
-                Command="{Binding LoginCommand}" 
-                IsEnabled="{Binding IsOTPVisible}"/>
+                Command="{Binding LoginCommand}"  
+                IsVisible="{Binding IsOTPVisible}"/>
             
             <Button 
                 VerticalOptions="Center"

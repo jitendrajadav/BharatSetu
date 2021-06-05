@@ -15,7 +15,7 @@ namespace BharatSetu.ViewModels
     {
         #region Properties
 
-        public ObservableCollection<Districts> Items => new ObservableCollection<Districts>();
+        public ObservableCollection<Districts> Items { get; set; } = new ObservableCollection<Districts>();
 
         public string StateId { get; set; }
 

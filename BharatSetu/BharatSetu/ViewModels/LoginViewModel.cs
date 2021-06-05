@@ -1,6 +1,8 @@
 ﻿using BharatSetu.Models;
 using BharatSetu.Views;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -43,7 +45,7 @@ namespace BharatSetu.ViewModels
         {
             ConfirmAuthentication confirm = new ConfirmAuthentication()
             {
-                otp = OTP,
+                otp = ComputeSha256Hash(OTP),
                 txnId = TxnId
             };
             var confirmMsg = await DataStore.ConfirmOTP(confirm);
@@ -52,10 +54,24 @@ namespace BharatSetu.ViewModels
                 var response = await confirmMsg.Content.ReadAsStringAsync();
                 var items = await Task.Run(() => JsonConvert.DeserializeObject<AuthConfirm>(response, GetJsonSetting()));
             }
-            var response1 = await confirmMsg.Content.ReadAsStringAsync();
-
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(StatesPage)}");
+        }
+
+        private string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using SHA256 sha256Hash = SHA256.Create();
+            // ComputeHash - returns byte array  
+            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+            // Convert byte array to a string   
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(bytes[i].ToString("x2"));
+            }
+            return builder.ToString();
         }
 
         private async void OnLoginClicked(object obj)

@@ -13,7 +13,7 @@ namespace BharatSetu.ViewModels
     {
         #region Properties
 
-        public ObservableCollection<State> Items => new ObservableCollection<State>();
+        public ObservableCollection<State> Items { get; set; } = new ObservableCollection<State>();
 
         private State _selectedItem;
         public State SelectedItem
