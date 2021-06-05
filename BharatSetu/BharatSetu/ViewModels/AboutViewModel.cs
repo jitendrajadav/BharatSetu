@@ -6,12 +6,19 @@ namespace BharatSetu.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        #region Commands
+
+        public ICommand OpenWebCommand => new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+
+        #endregion
+
+        #region Constructor
+
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
-        }
+        } 
 
-        public ICommand OpenWebCommand { get; }
+        #endregion
     }
 }

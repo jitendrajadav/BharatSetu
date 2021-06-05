@@ -7,23 +7,25 @@ namespace BharatSetu.ViewModels
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class ItemDetailViewModel : BaseViewModel
     {
-        private string itemId;
-        private string text;
-        private string description;
+        #region Properties
+
         public string Id { get; set; }
 
+        private string text;
         public string Text
         {
             get => text;
             set => SetProperty(ref text, value);
         }
 
+        private string description;
         public string Description
         {
             get => description;
             set => SetProperty(ref description, value);
         }
 
+        private string itemId;
         public string ItemId
         {
             get
@@ -36,6 +38,10 @@ namespace BharatSetu.ViewModels
                 LoadItemId(value);
             }
         }
+
+        #endregion
+
+        #region Methods
 
         public async void LoadItemId(string itemId)
         {
@@ -51,5 +57,7 @@ namespace BharatSetu.ViewModels
                 Debug.WriteLine("Failed to Load Item");
             }
         }
+
+        #endregion
     }
 }

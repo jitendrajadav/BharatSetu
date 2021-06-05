@@ -11,6 +11,7 @@ namespace BharatSetu.Controls
     {
         public IList<Session> Vaccines { get; set; }
         public Type SelectedItemNavigationTarget { get; set; }
+        public string SearQuery { get; set; }
 
         protected override void OnQueryChanged(string oldValue, string newValue)
         {
@@ -33,7 +34,7 @@ namespace BharatSetu.Controls
             await Shell.Current.GoToAsync($"{GetNavigationTarget()}?name={((Session)item).Name}");
         }
 
-        string GetNavigationTarget()
+        private string GetNavigationTarget()
         {
             return (Shell.Current as AppShell).CurrentPage.Title;//(route => route.Value.Equals(SelectedItemNavigationTarget)).Key;
         }

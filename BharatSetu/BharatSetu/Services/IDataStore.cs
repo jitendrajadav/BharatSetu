@@ -7,8 +7,8 @@ namespace BharatSetu.Services
 {
     public interface IDataStore<T>
     {
-        Task<HttpResponseMessage> GenerateOTP(Mobile mobile);
-        Task<HttpResponseMessage> ConfirmOTP(ConfirmAuthentication confirm);
+        Task<HttpResponseMessage> GenerateOTP(Mobile model);
+        Task<HttpResponseMessage> ConfirmOTP(ConfirmAuthentication model);
 
         Task<HttpResponseMessage> States(string acceptLanguage);
         Task<HttpResponseMessage> Districts(string acceptLanguage, string stateId);

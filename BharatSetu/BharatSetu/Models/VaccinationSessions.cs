@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SQLite;
+using System.Collections.Generic;
 
 namespace BharatSetu.Models
 {
@@ -9,6 +10,8 @@ namespace BharatSetu.Models
 
     public class Session
     {
+        [PrimaryKey]
+        public string Session_id { get; set; }
         public int Center_id { get; set; }
         public string Name { get; set; }
         public string Name_l { get; set; }
@@ -27,11 +30,11 @@ namespace BharatSetu.Models
         public string To { get; set; }
         public string Fee_type { get; set; }
         public string Fee { get; set; }
-        public string Session_id { get; set; }
         public string Date { get; set; }
         public int Available_capacity { get; set; }
         public int Min_age_limit { get; set; }
         public string Vaccine { get; set; }
+        [Ignore]
         public List<string> Slots { get; set; }
     }
 }

@@ -11,11 +11,12 @@ namespace BharatSetu.ViewModels
 {
     public class CalendarByPinViewModel : BaseViewModel
     {
-        public ObservableCollection<Center> Items { get; }
+        #region Properties
+
+        public ObservableCollection<Center> Items => new ObservableCollection<Center>();
 
 
         private bool isVaccinationLoaded;
-
         public bool IsVaccinationLoaded
         {
             get => isVaccinationLoaded;
@@ -28,6 +29,7 @@ namespace BharatSetu.ViewModels
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
+
         private string pincode;
         public string Pincode
         {
@@ -45,14 +47,26 @@ namespace BharatSetu.ViewModels
                 OnItemSelected(value);
             }
         }
-        public Command SearchCommand { get;  }
+
+        #endregion
+
+        #region Commands
+
+        public Command SearchCommand => new Command(OnSearchClicked);
+
+        #endregion
+
+        #region Constructor
 
         public CalendarByPinViewModel()
         {
             Title = "CalendarByPin";
-            Items = new ObservableCollection<Center>();
-            SearchCommand = new Command(OnSearchClicked);
         }
+
+        #endregion
+
+        #region Methods
+
         public void OnAppearing()
         {
             IsBusy = true;
@@ -87,13 +101,17 @@ namespace BharatSetu.ViewModels
             }
         }
 
-        async void OnItemSelected(Center item)
+        private async void OnItemSelected(Center item)
         {
             if (item == null)
+            {
                 return;
+            }
 
             // This will push the DistrictsPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(DistrictsPage)}?{nameof(DistrictsViewModel.StateId)}={item.Center_id}");
         }
+
+        #endregion 
     }
 }

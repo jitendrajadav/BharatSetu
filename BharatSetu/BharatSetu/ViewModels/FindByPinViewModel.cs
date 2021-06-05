@@ -11,7 +11,9 @@ namespace BharatSetu.ViewModels
 {
     public class FindByPinViewModel : BaseViewModel
     {
-        public ObservableCollection<Session> Items { get; }
+        #region Properties
+
+        public ObservableCollection<Session> Items => new ObservableCollection<Session>();
 
 
         private bool isVaccinationLoaded;
@@ -28,6 +30,7 @@ namespace BharatSetu.ViewModels
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
+
         private string pincode;
         public string Pincode
         {
@@ -45,14 +48,26 @@ namespace BharatSetu.ViewModels
                 OnItemSelected(value);
             }
         }
-        public Command SearchCommand { get;  }
+
+        #endregion
+
+        #region Commands
+
+        public Command SearchCommand => new Command(OnSearchClicked);
+
+        #endregion
+
+        #region Constructor
 
         public FindByPinViewModel()
         {
             Title = "FindByPin";
-            Items = new ObservableCollection<Session>();
-            SearchCommand = new Command(OnSearchClicked);
         }
+
+        #endregion
+
+        #region Methods
+
         public void OnAppearing()
         {
             IsBusy = true;
@@ -87,13 +102,17 @@ namespace BharatSetu.ViewModels
             }
         }
 
-        async void OnItemSelected(Session item)
+        private async void OnItemSelected(Session item)
         {
             if (item == null)
+            {
                 return;
+            }
 
             // This will push the DistrictsPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(DistrictsPage)}?{nameof(DistrictsViewModel.StateId)}={item.Session_id}");
         }
+
+        #endregion    
     }
 }

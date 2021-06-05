@@ -4,8 +4,10 @@
              x:Class="BharatSetu.Controls.FlyoutHeader"
              HeightRequest="150"
              WidthRequest="150">
-    <Image Aspect="AspectFit"
-           HorizontalOptions="FillAndExpand"
-           VerticalOptions="FillAndExpand" 
-           Source="state_emblem.png"/>
+    
+    <Image 
+        Aspect="AspectFit"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand" 
+        Source="state_emblem.png"/>
 </ContentView>

@@ -8,29 +8,36 @@ namespace BharatSetu.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        #region Properties
+
         public string Mobile { get; set; }
         public string OTP { get; set; }
+        public string TxnId { get; set; }
+
         public bool isOTPVisible = true;
         public bool IsOTPVisible
         {
             get => isOTPVisible;
             set => SetProperty(ref isOTPVisible, value);
         }
+
         private bool isConfirmVisible;
         public bool IsConfirmVisible
         {
             get => isConfirmVisible;
             set => SetProperty(ref isConfirmVisible, value);
         }
-        public Command LoginCommand { get; }
-        public Command ConfirmCommand { get;  }
-        public string TxnId { get; set; }
 
-        public LoginViewModel()
-        {
-            LoginCommand = new Command(OnLoginClicked);
-            ConfirmCommand = new Command(OnConfirmClicked);
-        }
+        #endregion
+
+        #region Commands
+
+        public Command LoginCommand => new Command(OnLoginClicked);
+        public Command ConfirmCommand => new Command(OnConfirmClicked);
+
+        #endregion
+
+        #region Methods
 
         private async void OnConfirmClicked(object obj)
         {
@@ -53,7 +60,7 @@ namespace BharatSetu.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            Mobile mobile =  new Mobile()
+            Mobile mobile = new Mobile()
             { mobile = Mobile };
             var auth = await DataStore.GenerateOTP(mobile);
             if (auth.IsSuccessStatusCode)
@@ -72,5 +79,7 @@ namespace BharatSetu.ViewModels
             }
 
         }
+
+        #endregion
     }
 }

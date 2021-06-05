@@ -13,26 +13,43 @@ namespace BharatSetu.ViewModels
 
     public class DistrictsViewModel : BaseViewModel
     {
-        private Districts _selectedItem;
+        #region Properties
 
-        public ObservableCollection<Districts> Items { get; }
-        public Command AddItemCommand { get; }
-        public Command<Districts> ItemTapped { get; }
-
-        public Command LoadItemsCommand { get; }
+        public ObservableCollection<Districts> Items => new ObservableCollection<Districts>();
 
         public string StateId { get; set; }
+
+        private Districts _selectedItem;
+        public Districts SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+                OnItemSelected(value);
+            }
+        }
+
+        #endregion
+
+        #region Commands
+
+        public Command AddItemCommand => new Command(OnAddItem);
+        public Command<Districts> ItemTapped => new Command<Districts>(OnItemSelected);
+        public Command LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
+
+        #endregion
+
+        #region Constructor
 
         public DistrictsViewModel()
         {
             Title = "Districts";
-            Items = new ObservableCollection<Districts>();
-
-            ItemTapped = new Command<Districts>(OnItemSelected);
-            LoadItemsCommand = new Command(async() => await ExecuteLoadItemsCommand());
-
-            AddItemCommand = new Command(OnAddItem);
         }
+
+        #endregion
+
+        #region Methods
 
         private async Task ExecuteLoadItemsCommand()
         {
@@ -68,28 +85,22 @@ namespace BharatSetu.ViewModels
             SelectedItem = null;
         }
 
-        public Districts SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                SetProperty(ref _selectedItem, value);
-                OnItemSelected(value);
-            }
-        }
-
         private async void OnAddItem(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Districts item)
+        private async void OnItemSelected(Districts item)
         {
             if (item == null)
+            {
                 return;
+            }
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.State_id}");
         }
+
+        #endregion
     }
 }

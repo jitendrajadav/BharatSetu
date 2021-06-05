@@ -6,37 +6,48 @@ namespace BharatSetu.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
+        #region Properties
+        
         private string text;
-        private string description;
-
-        public NewItemViewModel()
-        {
-            SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
-            PropertyChanged +=
-                (_, __) => SaveCommand.ChangeCanExecute();
-        }
-
-        private bool ValidateSave()
-        {
-            return !string.IsNullOrWhiteSpace(text)
-                && !string.IsNullOrWhiteSpace(description);
-        }
-
         public string Text
         {
             get => text;
             set => SetProperty(ref text, value);
         }
 
+        private string description;
         public string Description
         {
             get => description;
             set => SetProperty(ref description, value);
         }
 
-        public Command SaveCommand { get; }
-        public Command CancelCommand { get; }
+        #endregion
+
+        #region Commands
+        
+        public Command SaveCommand => new Command(OnSave, ValidateSave);
+        public Command CancelCommand => new Command(OnCancel);
+
+        #endregion
+     
+        #region Constructor
+
+        public NewItemViewModel()
+        {
+            PropertyChanged +=
+                (_, __) => SaveCommand.ChangeCanExecute();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private bool ValidateSave()
+        {
+            return !string.IsNullOrWhiteSpace(text)
+                && !string.IsNullOrWhiteSpace(description);
+        }
 
         private async void OnCancel()
         {
@@ -58,5 +69,7 @@ namespace BharatSetu.ViewModels
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
         }
+
+        #endregion
     }
 }

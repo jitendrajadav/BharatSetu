@@ -7,7 +7,7 @@ namespace BharatSetu.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FindByDistrictPage : ContentPage
     {
-        FindByDistrictViewModel _viewModel;
+        private readonly FindByDistrictViewModel _viewModel;
         public FindByDistrictPage()
         {
             InitializeComponent();
