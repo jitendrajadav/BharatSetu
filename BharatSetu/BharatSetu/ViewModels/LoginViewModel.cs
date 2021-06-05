@@ -53,6 +53,7 @@ namespace BharatSetu.ViewModels
             {
                 var response = await confirmMsg.Content.ReadAsStringAsync();
                 var items = await Task.Run(() => JsonConvert.DeserializeObject<AuthConfirm>(response, GetJsonSetting()));
+                Xamarin.Essentials.Preferences.Set("token", items.token);
             }
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(StatesPage)}");
