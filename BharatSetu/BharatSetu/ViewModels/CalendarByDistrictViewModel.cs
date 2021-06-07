@@ -13,6 +13,7 @@ namespace BharatSetu.ViewModels
     {
         #region Properties
 
+        public string SearchBarPlace => BharatSetuResources.FindByDistrictPage_SearchBar_Placeholder;
         public ObservableCollection<Center> Items { get; set; } = new ObservableCollection<Center>();
 
         private bool isVaccinationLoaded;
@@ -29,12 +30,12 @@ namespace BharatSetu.ViewModels
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
-        
-        private string distId;
-        public string DistId
+
+        private string searchBarText;
+        public string SearchBarText
         {
-            get => distId;
-            set => SetProperty(ref distId, value);
+            get => searchBarText;
+            set => SetProperty(ref searchBarText, value);
         }
 
         private Session _selectedItem;
@@ -78,7 +79,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var search = await DataStore.CalanderByDistrict("IN", DistId, SelectedDate.ToString("dd-MM-yyyy"));
+                var search = await DataStore.CalanderByDistrict("IN", SearchBarText, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {
                     IsVaccinationLoaded = true;

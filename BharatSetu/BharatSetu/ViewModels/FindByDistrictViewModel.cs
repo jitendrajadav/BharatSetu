@@ -15,6 +15,7 @@ namespace BharatSetu.ViewModels
     public class FindByDistrictViewModel : BaseViewModel
     {
         #region Properties
+        public string SearchBarPlace => BharatSetuResources.FindByDistrictPage_SearchBar_Placeholder;
 
         public ObservableCollection<Session> Items { get; set; } = new ObservableCollection<Session>();
 
@@ -32,11 +33,12 @@ namespace BharatSetu.ViewModels
             get => selectedDate;
             set => SetProperty(ref selectedDate, value);
         }
-        private string districtId;
-        public string DistrictId
+
+        private string searchBarText;
+        public string SearchBarText
         {
-            get => districtId;
-            set => SetProperty(ref districtId, value);
+            get => searchBarText;
+            set => SetProperty(ref searchBarText, value);
         }
 
         private Session _selectedItem;
@@ -98,7 +100,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var search = await DataStore.FindByDistrict("IN", DistrictId, SelectedDate.ToString("dd-MM-yyyy"));
+                var search = await DataStore.FindByDistrict("IN", SearchBarText, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {
                     BharatSetuDB database = await BharatSetuDB.Instance;

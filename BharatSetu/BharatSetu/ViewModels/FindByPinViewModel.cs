@@ -31,12 +31,15 @@ namespace BharatSetu.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        private string pincode;
-        public string Pincode
+        private string searchBarText;
+        public string SearchBarText
         {
-            get => pincode;
-            set => SetProperty(ref pincode, value);
+            get => searchBarText;
+            set => SetProperty(ref searchBarText, value);
         }
+
+        private string searchBarPlace;
+        public string SearchBarPlace => BharatSetuResources.CalenderByPinPage_SearchBar_Placeholder;
 
         private Session _selectedItem;
         public Session SelectedItem
@@ -79,7 +82,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var search = await DataStore.FindByPin("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
+                var search = await DataStore.FindByPin("IN", SearchBarText, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {
                     IsVaccinationLoaded = true;

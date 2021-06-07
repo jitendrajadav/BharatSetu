@@ -3,23 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BharatSetu.Views.CalendarByDistrictPage"
              Title="{Binding Title}"
+             xmlns:ctr="clr-namespace:BharatSetu.Controls"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models">
 
     <Shell.TitleView>
-        <Grid ColumnSpacing="0" ColumnDefinitions="Auto,*" >
-            <DatePicker 
-                Grid.Column="0" 
-                Date="{Binding SelectedDate}" 
-                Format="dd-MM-yyyy" />
-            <SearchBar
-                Text="{Binding DistId}"
-                Grid.Column="1"
-                Placeholder="District Id" 
-                SearchCommand="{Binding SearchCommand}"/>
-        </Grid>
+        <ctr:TitlePage/>
     </Shell.TitleView>
-            
+    
     <CollectionView
         IsVisible="{Binding IsVaccinationLoaded}"
         x:Name="ItemsListView"

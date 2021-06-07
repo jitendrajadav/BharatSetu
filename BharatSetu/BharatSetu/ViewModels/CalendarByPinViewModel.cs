@@ -12,7 +12,7 @@ namespace BharatSetu.ViewModels
     public class CalendarByPinViewModel : BaseViewModel
     {
         #region Properties
-
+        public string SearchBarPlace => BharatSetuResources.CalenderByPinPage_SearchBar_Placeholder;
         public ObservableCollection<Center> Items { get; set; } = new ObservableCollection<Center>();
 
 
@@ -30,11 +30,11 @@ namespace BharatSetu.ViewModels
             set => SetProperty(ref selectedDate, value);
         }
 
-        private string pincode;
-        public string Pincode
+        private string searchBarText;
+        public string SearchBarText
         {
-            get => pincode;
-            set => SetProperty(ref pincode, value);
+            get => searchBarText;
+            set => SetProperty(ref searchBarText, value);
         }
 
         private Center _selectedItem;
@@ -78,7 +78,7 @@ namespace BharatSetu.ViewModels
             IsBusy = true;
             try
             {
-                var search = await DataStore.CalanderByPin("IN", Pincode, SelectedDate.ToString("dd-MM-yyyy"));
+                var search = await DataStore.CalanderByPin("IN", SearchBarText, SelectedDate.ToString("dd-MM-yyyy"));
                 if (search.IsSuccessStatusCode)
                 {
                     IsVaccinationLoaded = true;

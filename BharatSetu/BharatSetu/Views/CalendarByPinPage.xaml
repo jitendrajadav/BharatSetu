@@ -4,23 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ctr="clr-namespace:BharatSetu.Controls"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:Class="BharatSetu.Views.CalendarByPinPage">
-    
+
     <Shell.TitleView>
-        <Grid ColumnSpacing="0" ColumnDefinitions="Auto,*" >
-            <DatePicker 
-                Grid.Column="0" 
-                Date="{Binding SelectedDate}" 
-                Format="dd-MM-yyyy" />
-            <SearchBar
-                Text="{Binding Pincode}"
-                Grid.Column="1"
-                Placeholder="Pincode" 
-                SearchCommand="{Binding SearchCommand}"/>
-        </Grid>
+        <ctr:TitlePage/>
     </Shell.TitleView>
 
     <CollectionView

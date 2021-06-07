@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Name="self"
              Title="{Binding Title}"
+             xmlns:ctr="clr-namespace:BharatSetu.Controls"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:DataType="local:FindByDistrictViewModel"
@@ -23,19 +24,9 @@
     </Shell.SearchHandler>-->
 
     <Shell.TitleView>
-        <Grid ColumnSpacing="0" ColumnDefinitions="Auto,*" >
-            <DatePicker 
-                Grid.Column="0" 
-                Date="{Binding SelectedDate}" 
-                Format="dd-MM-yyyy" />
-            <SearchBar
-                Text="{Binding DistrictId}"
-                Grid.Column="1"
-                Placeholder="District Id" 
-                SearchCommand="{Binding SearchCommand}"/>
-        </Grid>
+        <ctr:TitlePage/>
     </Shell.TitleView>
-            
+
     <CollectionView
         Grid.ColumnSpan="2"
         Grid.Row="2"

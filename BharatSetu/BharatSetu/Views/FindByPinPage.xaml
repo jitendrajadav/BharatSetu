@@ -6,23 +6,14 @@
              mc:Ignorable="d"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
+             xmlns:ctr="clr-namespace:BharatSetu.Controls"
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:Class="BharatSetu.Views.FindByPinPage">
 
     <Shell.TitleView>
-        <Grid ColumnSpacing="0" ColumnDefinitions="Auto,*" >
-            <DatePicker 
-                Grid.Column="0" 
-                Date="{Binding SelectedDate}" 
-                Format="dd-MM-yyyy" />
-            <SearchBar
-                Text="{Binding Pincode}"
-                Grid.Column="1"
-                Placeholder="Pincode" 
-                SearchCommand="{Binding SearchCommand}"/>
-        </Grid>
+        <ctr:TitlePage/>
     </Shell.TitleView>
-    
+
     <CollectionView
         Grid.ColumnSpan="2"
         Grid.Row="2"
