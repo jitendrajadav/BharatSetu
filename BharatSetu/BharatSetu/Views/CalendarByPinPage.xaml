@@ -9,282 +9,270 @@
              xmlns:model="clr-namespace:BharatSetu.Models"
              x:Class="BharatSetu.Views.CalendarByPinPage">
     
-    <ContentPage.Content>
-    
-        <Grid 
-            Padding="10,0,10,0" 
-            RowDefinitions="Auto,Auto,*" 
-            ColumnDefinitions="*,*">
-            
-            <Entry 
-                Grid.Column="0"
-                Placeholder="Pincode" 
-                Text="{Binding Pincode}"/>
-        
+    <Shell.TitleView>
+        <Grid ColumnSpacing="0" ColumnDefinitions="Auto,*" >
             <DatePicker 
-                Grid.Column="1" 
+                Grid.Column="0" 
                 Date="{Binding SelectedDate}" 
                 Format="dd-MM-yyyy" />
-            
-            <Button 
-                Grid.Row="1"
-                Grid.ColumnSpan="2" 
-                VerticalOptions="Center" 
-                Text="Search" 
-                Command="{Binding SearchCommand}"/>
-
-            <CollectionView
-                Grid.ColumnSpan="2"
-                Grid.Row="2"
-                IsVisible="{Binding IsVaccinationLoaded}"
-                x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                SelectionMode="None">
-                
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-            
-                        <Grid 
-                            Padding="10,10,10,10" 
-                            x:DataType="model:Center" 
-                            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,1" 
-                            ColumnDefinitions="Auto,*">
-                            
-                            <Label
-                                VerticalOptions="Center"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="Name"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="Default"/>
-
-                            <Label
-                                VerticalOptions="Center"
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Text="{Binding Name}"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="Address"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Text="{Binding Address}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="2"
-                                Text="State_name"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="2"
-                                Text="{Binding State_name}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="3"
-                                Text="District_name"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="3"
-                                Text="{Binding District_name}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="4"
-                                Text="Block_name"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="4"
-                                Text="{Binding Block_name}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="5"
-                                Text="From"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="5"
-                                Text="{Binding From}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="6"
-                                Text="To"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="6"
-                                Text="{Binding To}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="7"
-                                Text="Fee_type"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="7"
-                                Text="{Binding Fee_type}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="8"
-                                Text="Fee"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="8"
-                                Text="{Binding Vaccine_fees[0].Fee}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="9"
-                                Text="Available_capacity"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="9"
-                                Text="{Binding Sessions[0].Available_capacity}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="10"
-                                Text="Min_age_limit"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="10"
-                                Text="{Binding Sessions[0].Min_age_limit}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="0"
-                                Grid.Row="11"
-                                Text="Vaccine"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-
-                            <Label 
-                                VerticalOptions="Center"
-                                Grid.Column="1"
-                                Grid.Row="11"
-                                Text="{Binding Sessions[0].Vaccine}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Default"/>
-                            
-                            <BoxView 
-                                Grid.ColumnSpan="2"
-                                Grid.Row="12"
-                                Background="{AppThemeBinding Dark=White, Light=Black}"
-                                HorizontalOptions="FillAndExpand"/>
-                            
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                    NumberOfTapsRequired="1"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalendarByPinViewModel}}, Path=ItemTapped}"		
-                                    CommandParameter="{Binding .}">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+            <SearchBar
+                Text="{Binding Pincode}"
+                Grid.Column="1"
+                Placeholder="Pincode" 
+                SearchCommand="{Binding SearchCommand}"/>
         </Grid>
-    </ContentPage.Content>
+    </Shell.TitleView>
+
+    <CollectionView
+        Grid.ColumnSpan="2"
+        Grid.Row="2"
+        IsVisible="{Binding IsVaccinationLoaded}"
+        x:Name="ItemsListView"
+        ItemsSource="{Binding Items}"
+        SelectionMode="None">
+                
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+            
+                <Grid 
+                    Padding="10,10,10,10" 
+                    x:DataType="model:Center" 
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,1" 
+                    ColumnDefinitions="Auto,*">
+                            
+                    <Label
+                        VerticalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Name"
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemTextStyle}" 
+                        FontSize="Default"/>
+
+                    <Label
+                        VerticalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding Name}"
+                        LineBreakMode="NoWrap" 
+                        Style="{DynamicResource ListItemTextStyle}" 
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Address"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Address}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="State_name"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding State_name}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="District_name"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Text="{Binding District_name}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="Block_name"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding Block_name}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="From"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Text="{Binding From}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="To"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Text="{Binding To}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        Text="Fee_type"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Text="{Binding Fee_type}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        Text="Fee"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="8"
+                        Text="{Binding Vaccine_fees[0].Fee}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="9"
+                        Text="Available_capacity"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="9"
+                        Text="{Binding Sessions[0].Available_capacity}" 
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="10"
+                        Text="Min_age_limit"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="10"
+                        Text="{Binding Sessions[0].Min_age_limit}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="11"
+                        Text="Vaccine"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+
+                    <Label 
+                        VerticalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="11"
+                        Text="{Binding Sessions[0].Vaccine}"
+                        LineBreakMode="NoWrap"
+                        Style="{DynamicResource ListItemDetailTextStyle}"
+                        FontSize="Default"/>
+                            
+                    <BoxView 
+                        Grid.ColumnSpan="2"
+                        Grid.Row="12"
+                        Background="{AppThemeBinding Dark=White, Light=Black}"
+                        HorizontalOptions="FillAndExpand"/>
+                            
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            NumberOfTapsRequired="1"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalendarByPinViewModel}}, Path=ItemTapped}"		
+                            CommandParameter="{Binding .}">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                            
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
 </ContentPage>

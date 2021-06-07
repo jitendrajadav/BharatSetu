@@ -5,9 +5,11 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"  
+             NavigationPage.HasNavigationBar="True"
              x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
+        
         <ToolbarItem 
             Text="Add" 
             Command="{Binding AddItemCommand}" />
