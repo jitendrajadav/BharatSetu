@@ -33,7 +33,9 @@
         IsVisible="{Binding IsVaccinationLoaded}"
         x:Name="ItemsListView"
         ItemsSource="{Binding Items}"
-        SelectionMode="None">
+        SelectionMode="None"
+        Scrolled="ItemsListView_Scrolled"
+        EmptyView="No items to display">
                 
         <CollectionView.ItemTemplate>
             <DataTemplate>

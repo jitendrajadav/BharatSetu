@@ -15,7 +15,8 @@
         <CollectionView 
             x:Name="ItemsListView"
             ItemsSource="{Binding Items}"
-            SelectionMode="None">
+            SelectionMode="None"
+            EmptyView="No items to display">
             
             <CollectionView.ItemTemplate>
                 <DataTemplate>
