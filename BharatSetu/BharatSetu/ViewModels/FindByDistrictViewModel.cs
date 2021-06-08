@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace BharatSetu.ViewModels
@@ -142,6 +143,18 @@ namespace BharatSetu.ViewModels
         {
             BharatSetuDB database = await BharatSetuDB.Instance;
             _ = await database.GetItemsAsync();
+
+            var location = new Location(model.Lat, model.Long);
+            var options = new MapLaunchOptions { Name = model.Name };
+
+            try
+            {
+                await Map.OpenAsync(location, options);
+            }
+            catch (Exception ex)
+            {
+                // No map application available to open
+            }
         }
 
         #endregion    
