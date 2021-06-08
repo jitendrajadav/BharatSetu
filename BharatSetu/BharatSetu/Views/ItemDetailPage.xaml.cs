@@ -1,5 +1,4 @@
-﻿using BharatSetu.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace BharatSetu.Views
 {
@@ -8,7 +7,6 @@ namespace BharatSetu.Views
         public ItemDetailPage()
         {
             InitializeComponent();
-            BindingContext = new ItemDetailViewModel();
         }
     }
 }

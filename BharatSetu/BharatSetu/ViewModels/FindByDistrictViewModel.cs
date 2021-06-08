@@ -56,7 +56,7 @@ namespace BharatSetu.ViewModels
         #endregion
 
         #region Commands
-
+        public Command ApearCommand => new Command(OnAppearing);
         public Command SearchCommand => new Command(OnSearchClicked);
         public Command ItemTapped => new Command<Session>(OnItemTapped);
         public Command FilterCommand => new Command<string>(FilterItems);

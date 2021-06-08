@@ -5,8 +5,13 @@
              Shell.PresentationMode="ModalAnimated"
              Title="New Item"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             xmlns:vm="clr-namespace:BharatSetu.ViewModels">
     
+    <ContentPage.BindingContext>
+        <vm:NewItemViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
     
         <StackLayout

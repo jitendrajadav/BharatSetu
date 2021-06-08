@@ -7,10 +7,19 @@
              x:Name="self"
              Title="{Binding Title}"
              xmlns:ctr="clr-namespace:BharatSetu.Controls"
-             xmlns:local="clr-namespace:BharatSetu.ViewModels"  
+             xmlns:vm="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"
-             x:DataType="local:FindByDistrictViewModel"
-             x:Class="BharatSetu.Views.FindByDistrictPage">
+             x:DataType="vm:FindByDistrictViewModel"
+             x:Class="BharatSetu.Views.FindByDistrictPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+
+    <ContentPage.BindingContext>
+        <vm:FindByDistrictViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding ApearCommand}"/>
+    </ContentPage.Behaviors>
     
     <!--<Shell.SearchHandler>
         --><!--<controls:VaccineSearchHandler 
@@ -26,7 +35,7 @@
     <Shell.TitleView>
         <ctr:TitlePage/>
     </Shell.TitleView>
-
+    
     <CollectionView
         Grid.ColumnSpan="2"
         Grid.Row="2"
@@ -270,7 +279,7 @@
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
                             NumberOfTapsRequired="1"
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:FindByDistrictViewModel}}, Path=ItemTapped}"		
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FindByDistrictViewModel}}, Path=ItemTapped}"		
                             CommandParameter="{Binding .}">
                         </TapGestureRecognizer>
                     </Grid.GestureRecognizers>

@@ -3,10 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BharatSetu.Views.ItemsPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:BharatSetu.ViewModels"  
+             xmlns:vm="clr-namespace:BharatSetu.ViewModels"  
              xmlns:model="clr-namespace:BharatSetu.Models"  
              NavigationPage.HasNavigationBar="True"
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseItemsPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    
+    <ContentPage.BindingContext>
+        <vm:ItemsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding ApearCommand}"/>
+    </ContentPage.Behaviors>
 
     <ContentPage.ToolbarItems>
         
@@ -19,7 +28,7 @@
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
     <RefreshView 
-        x:DataType="local:ItemsViewModel" 
+        x:DataType="vm:ItemsViewModel" 
         Command="{Binding LoadItemsCommand}" 
         IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         
@@ -50,7 +59,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ItemsViewModel}}, Path=ItemTapped}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>

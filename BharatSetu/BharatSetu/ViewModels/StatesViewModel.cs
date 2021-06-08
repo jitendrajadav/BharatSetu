@@ -29,7 +29,7 @@ namespace BharatSetu.ViewModels
         #endregion
 
         #region Commands
-
+        public Command ApearCommand => new Command(OnAppearing);
         public Command LoadItemsCommand => new Command(async () => await ExecuteLoadItemsCommand());
         public Command AddItemCommand => new Command(OnAddItem);
         public Command<State> ItemTapped => new Command<State>(OnItemSelected);
