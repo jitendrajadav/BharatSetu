@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.OS;
 using Plugin.LocalNotification;
 using Android.Content;
+using Plugin.FirebasePushNotification;
 
 namespace BharatSetu.Droid
 {
@@ -21,7 +22,7 @@ namespace BharatSetu.Droid
             // Must create a Notification Channel when API >= 26
             // you can created multiple Notification Channels with different names.
             NotificationCenter.CreateNotificationChannel();
-
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
             LoadApplication(new App());
 
             NotificationCenter.NotifyNotificationTapped(Intent);

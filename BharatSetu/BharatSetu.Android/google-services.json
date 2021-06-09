@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "638211769101",
+    "project_id": "bharatsetu-fff19",
+    "storage_bucket": "bharatsetu-fff19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638211769101:android:78b6517a7c61ae76f76644",
+        "android_client_info": {
+          "package_name": "com.companyname.BharatSetu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638211769101-mgr5fdh9bi1tuh8uu1i0ckstjl8qtqte.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv56woh3zizIOSzcaDBg0y2bYCHhojIf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638211769101-mgr5fdh9bi1tuh8uu1i0ckstjl8qtqte.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

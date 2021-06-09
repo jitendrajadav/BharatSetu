@@ -1,5 +1,7 @@
 ﻿
 using Foundation;
+using Plugin.FirebasePushNotification;
+using System;
 using UIKit;
 
 namespace BharatSetu.iOS
@@ -24,7 +26,7 @@ namespace BharatSetu.iOS
             // Ask the user for permission to show notifications on iOS 10.0+ at startup.
             // If not asked at startup, user will be asked when showing the first notification.
             Plugin.LocalNotification.NotificationCenter.AskPermission();
-
+            FirebasePushNotificationManager.Initialize(options, true);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
@@ -33,6 +35,33 @@ namespace BharatSetu.iOS
         public override void WillEnterForeground(UIApplication uiApplication)
         {
             Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+        }
+
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
+        }
+
+        public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+        {
+            FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
+
+        }
+        // To receive notifications in foregroung on iOS 9 and below.
+        // To receive notifications in background in any iOS version
+        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+        {
+            // If you are receiving a notification message while your app is in the background,
+            // this callback will not be fired 'till the user taps on the notification launching the application.
+
+            // If you disable method swizzling, you'll need to call this method. 
+            // This lets FCM track message delivery and analytics, which is performed
+            // automatically with method swizzling enabled.
+            FirebasePushNotificationManager.DidReceiveMessage(userInfo);
+            // Do your magic to handle the notification data
+            System.Console.WriteLine(userInfo);
+
+            completionHandler(UIBackgroundFetchResult.NewData);
         }
     }
 }

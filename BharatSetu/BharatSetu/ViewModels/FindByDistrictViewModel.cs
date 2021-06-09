@@ -4,6 +4,7 @@ using BharatSetu.Views;
 using Newtonsoft.Json;
 using Plugin.LocalNotification;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace BharatSetu.ViewModels
     public class FindByDistrictViewModel : BaseViewModel
     {
         #region Properties
+        private int _tapCount;
         public string SearchBarPlace => BharatSetuResources.FindByDistrictPage_SearchBar_Placeholder;
 
         public ObservableCollection<Session> Items { get; set; } = new ObservableCollection<Session>();
@@ -88,15 +90,33 @@ namespace BharatSetu.ViewModels
 
         private async void OnSearchClicked(object obj)
         {
-            var notification = new NotificationRequest
+            _tapCount++;
+
+            var list = new List<string>
+            {
+                typeof(NotificationPage).FullName,
+                _tapCount.ToString()
+            };
+
+            var serializeReturningData = ObjectSerializer.SerializeObject(list);
+
+            var request = new NotificationRequest
             {
                 NotificationId = 100,
                 Title = "Test",
-                Description = "Test Description",
-                ReturningData = "Dummy data", // Returning data when tapped on notification.
-                BadgeNumber = 1
+                Description = $"Tap Count: {_tapCount}",
+                BadgeNumber = _tapCount,
+                ReturningData = serializeReturningData,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyAutoCancelTime = DateTime.Now.AddSeconds(10000),
+                    NotifyRepeatInterval = TimeSpanExt.ToTimeSpanExt(new TimeSpan(0, 0, 0, 1000)),
+                    NotifyTime = DateTime.Now.AddSeconds(12),
+                    Repeats = NotificationRepeat.Daily
+                }
             };
-            bool v = await NotificationCenter.Current.Show(notification);
+
+           await NotificationCenter.Current.Show(request);
 
             IsBusy = true;
             try
